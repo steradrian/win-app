@@ -57,7 +57,12 @@ const Footer = () => {
   return (
     <footer className="relative overflow-hidden max-w-[90rem] mx-auto text-textDefault text-[0.875rem] leading-5 md:mt-6 px-3 md:px-[7rem] py-3 md:py-6">
       <hr className="bg-light opacity-10 h-[0.125rem] mb-6" />
-      <div className="flex flex-col md:flex-row justify-between">
+      <Image
+        src={Elipsis}
+        alt="elipsis"
+        className="absolute bottom-0 md:bottom-[-600%] left-0 w-full z-0"
+      />
+      <div className="z-10 flex flex-col md:flex-row justify-between">
         <div className="flex flex-col items-center mb-8 md:mb-4">
           <Image
             src={WinLogo}
@@ -151,11 +156,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <Image
-        src={Elipsis}
-        alt="elipsis"
-        className="absolute bottom-0 md:bottom-[-600%] left-0 w-full"
-      />
     </footer>
   );
 };
