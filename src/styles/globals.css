@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "typeface-inter";
+
+:root {
+  /* Background colors */
+  --light: #ffffff;
+  --light-4: "rgba(255, 255, 255, 0.04)";
+  --dark: #131117;
+  --dark-lighter: #1e1c21;
+  --dark-modal: #222026;
+  --lightest: #26242b;
+  --lighter: #1c1920;
+  --primary: #9668f8;
+  --primaryHover: #8058d3;
+  --critical: #e53e3e;
+  --success: #28a745;
+
+  /* Text colors */
+  --textDefault: #ffffff;
+  --textSubdued: #b6adc7;
+  --textDisabled: #46434d;
+  --textPrimary: #8f6af0;
+  --textOnPurple: #d6bcfa;
+
+  --padding-sm: 0.25rem; /* 4px */
+  --padding-lg: 0.5rem; /* 8px */
+
+  --spacing-2xs: 0.25rem; /* 4px */
+
+  --radius-full: 360px;
+}
+
+body {
+  color: var(--textDefault);
+  background: var(--dark);
+  font-family: "Inter", sans-serif;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-enter {
+  animation: fade-in 300ms ease-in forwards;
+}
