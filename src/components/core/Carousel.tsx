@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import CarouselItem, { CarouselItemInterface } from "./CarouselItem";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import ChevronRight from "../../assets/chevron_right.png";
+import CarouselItem, { CarouselItemInterface } from "./CarouselItem";
+import useDeviceSize from "@componentes/utils/useDeviceSize";
 
 const ITEM_WIDTH_DESKTOP = 358; // Width of each carousel item in pixels
 const PADDING = 14; // Padding on each side
@@ -14,21 +15,26 @@ const Carousel = ({ list }: { list: CarouselItemInterface[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0); // Store the calculated item width
 
+  const { windowWidth } = useDeviceSize();
+
   useEffect(() => {
-    // Calculate item width based on the window size minus padding
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setItemWidth(
-        width < BREAKPOINT ? width - PADDING * 2 : ITEM_WIDTH_DESKTOP
-      );
-    };
+    if (typeof window !== "undefined") {
+      // Calculate item width based on the window size minus padding
+      const handleResize = () => {
+        setItemWidth(
+          windowWidth < BREAKPOINT
+            ? windowWidth - PADDING * 2
+            : ITEM_WIDTH_DESKTOP
+        );
+      };
 
-    handleResize(); // Set initial width
-    window.addEventListener("resize", handleResize); // Update on resize
+      handleResize(); // Set initial width
+      window.addEventListener("resize", handleResize); // Update on resize
 
-    return () => {
-      window.removeEventListener("resize", handleResize); // Cleanup
-    };
+      return () => {
+        window.removeEventListener("resize", handleResize); // Cleanup
+      };
+    }
   }, []);
 
   const translateAmount = itemWidth + GAP; // Calculate translation amount

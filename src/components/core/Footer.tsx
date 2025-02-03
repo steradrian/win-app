@@ -2,8 +2,9 @@
 
 import { footerText } from "@componentes/utils/text";
 import Image from "next/image";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import CertikLogo from "../../assets/certik-logo.png";
+import Elipsis from "../../assets/footer-elipsis.png";
 import WinLogo from "../../assets/logo-header.png";
 import InstagramLogo from "../../assets/social/instagram-logo.png";
 import TelegramLogo from "../../assets/social/telegram-logo.png";
@@ -13,7 +14,7 @@ import WinSDK from "../../assets/win-sdk.png";
 import { BREAKPOINT } from "./Carousel";
 import LinkControl from "./LinkControl";
 import ToggleControl from "./ToggleControl";
-import Elipsis from "../../assets/footer-elipsis.png";
+import useDeviceSize from "@componentes/utils/useDeviceSize";
 
 interface FooterLinkProps {
   linkKey: string;
@@ -35,22 +36,6 @@ function getSocialIcon(text: string) {
 }
 
 const FooterLink = ({ linkKey, linkText }: FooterLinkProps) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < BREAKPOINT);
-    };
-
-    // Set the initial state
-    handleResize();
-
-    // Add resize event listener
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <li>
       <LinkControl
@@ -66,7 +51,9 @@ const FooterLink = ({ linkKey, linkText }: FooterLinkProps) => {
 };
 
 const Footer = () => {
-  const isMobile = window.innerWidth < BREAKPOINT;
+  const { windowWidth } = useDeviceSize();
+
+  const isMobile = windowWidth < BREAKPOINT;
   return (
     <footer className="relative overflow-hidden max-w-[90rem] mx-auto text-textDefault text-[0.875rem] leading-5 md:mt-6 px-3 md:px-[7rem] py-3 md:py-6">
       <hr className="bg-light opacity-10 h-[0.125rem] mb-6" />
