@@ -1,14 +1,52 @@
-type ButtonType = "small" | "medium" | "big";
-type ButtonVariant = "primary" | "secondary";
+import React, { ButtonHTMLAttributes, FC, MemoExoticComponent } from "react";
+
+type ButtonSize = "small" | "medium" | "big";
+type ButtonVariant = "primary" | "primary2" | "secondary";
+type ButtonType = "submit" | "reset" | "button" | undefined;
 
 interface ButtonControlProps {
   text: string;
   className?: string;
-  size?: ButtonType;
+  size?: ButtonSize;
   variant?: ButtonVariant;
   fadeIn?: boolean;
+  type?: ButtonType;
+  Icon?: FC | MemoExoticComponent<FC>;
   onClick: () => void;
 }
+
+const sizeStyles = {
+  small: {
+    padding: "py-[0.25rem] px-[0.75rem]",
+    fontSize: "text-[0.875rem]",
+    borderRadius: "rounded-[0.5rem]",
+  },
+  medium: {
+    padding: "py-[0.5rem] px-[1rem]",
+    fontSize: "text-[0.875rem]",
+    borderRadius: "rounded-[0.5rem]",
+  },
+  big: {
+    padding: "py-[0.6875rem] px-[1.375rem]",
+    fontSize: "text-[1rem]",
+    borderRadius: "rounded-[0.625rem]",
+  },
+};
+
+const variantStyles = {
+  primary: {
+    backgroundColor: "bg-primary",
+    hover: "hover:bg-primaryHover",
+  },
+  primary2: {
+    backgroundColor: "bg-basePrimary",
+    hover: "hover:bg-basePrimaryHover",
+  },
+  secondary: {
+    backgroundColor: "bg-[rgba(255,255,255,0.02)]",
+    hover: "hover:bg-[rgba(255,255,255,0.05)]",
+  },
+};
 
 const ButtonControl = ({
   text,
@@ -16,50 +54,42 @@ const ButtonControl = ({
   size = "big",
   variant = "primary",
   fadeIn = false,
+  type = "button",
+  Icon,
   onClick,
 }: ButtonControlProps) => {
-  // Define styles based on the size
-  const padding =
-    size === "small"
-      ? "py-[0.25rem] px-[0.75rem]" // small - 4px x 8px
-      : size === "medium"
-      ? "py-[0.5rem] px-[1rem]" // medium - 8px x 16px
-      : "py-[0.6875rem] px-[1.375rem]"; // big - 11px 22px
-  const fontSize = size === "big" ? "text-[1rem]" : "text-[0.875rem]"; // big - 16px; small & medium - 14px
-  const borderRadius =
-    size === "big" ? "rounded-[0.625rem]" : "rounded-[0.5rem]"; // big - 10px; small & medium - 8px
-  const backgrounColor =
-    variant === "primary" ? "bg-primary" : "bg-[rgba(255,255,255,0.02)] ";
-  const backgroundColorHover =
-    variant === "primary"
-      ? "hover:bg-primaryHover"
-      : "hover:bg-[rgba(255,255,255,0.05)] ";
+  const { padding, fontSize, borderRadius } = sizeStyles[size];
+  const { backgroundColor, hover } = variantStyles[variant];
 
   return (
     <button
       className={`
         inline-block
-        ${backgrounColor} 
+        ${backgroundColor}
         text-textDefault
         leading-6
-        bg-opacity-100 
-        transition-colors 
-        duration-300 
-        ease-nice-ease 
-        shadow 
-        capitalize 
-        ${backgroundColorHover} 
-        hover:shadow-md 
-        focus:outline-none 
-        ${padding} 
-        ${fontSize} 
+        bg-opacity-100
+        transition-colors
+        duration-300
+        ease-nice-ease
+        shadow
+        capitalize
+        ${hover}
+        hover:shadow-md
+        focus:outline-none
+        ${padding}
+        ${fontSize}
         ${borderRadius}
         ${fadeIn ? "animate-fade-in" : ""}
         ${className}
       `}
+      type={type}
       onClick={onClick}
     >
-      {text}
+      <div className="flex items-center justify-center gap-2">
+        {Icon && <Icon />}
+        {text}
+      </div>
     </button>
   );
 };

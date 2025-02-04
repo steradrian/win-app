@@ -21,13 +21,18 @@ export default {
         light4: "var(--light-4)",
         lightest: "var(--lightest)",
         lighter: "var(--lighter)",
+        gray: "var(--gray)",
+        lightGray: "var(--lightGray)",
         primary: "var(--primary)",
         primaryHover: "var(--primaryHover)",
+        basePrimary: "var(--basePrimary)",
+        basePrimaryHover: "var(--basePrimaryHover)",
         critical: "var(--critical)",
         success: "var(--success)",
 
         // Text colors
         textDefault: "var(--textDefault)",
+        textDark: "var(--textDark)",
         textSubdued: "var(--textSubdued)",
         textDisabled: "var(--textDisabled)",
         textPrimary: "var(--textPrimary)",
@@ -41,9 +46,19 @@ export default {
           "0%": { opacity: "0", transform: "translateY(4px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "line-fill": {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+        "border-fill": {
+          "0%": { strokeDashoffset: "100" },
+          "100%": { strokeDashoffset: "0" },
+        },
       },
       animation: {
         "fade-in": "fade-in 300ms ease-in forwards",
+        "line-fill": "line-fill 0.5s forwards",
+        "border-fill": "border-fill 0.5s forwards",
       },
     },
   },

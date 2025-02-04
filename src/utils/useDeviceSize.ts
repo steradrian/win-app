@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+/**
+ * Custom hook to get the current window width.
+ * @returns {object} An object containing the current window width.
+ */
 const useDeviceSize = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -8,10 +12,10 @@ const useDeviceSize = () => {
   };
 
   useEffect(() => {
-    // component is mounted and window is available
+    // Component is mounted, and window is available
     handleWindowResize();
     window.addEventListener("resize", handleWindowResize);
-    // unsubscribe from the event on component unmount
+    // Unsubscribe from the event on component unmount
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 

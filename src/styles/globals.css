@@ -15,11 +15,17 @@
   --lighter: #1c1920;
   --primary: #9668f8;
   --primaryHover: #8058d3;
+  --basePrimary: #5913f3;
+  --basePrimaryHover: #6916ff;
+  --lightGray: #13111708;
+  --gray: #1412171f;
+
   --critical: #e53e3e;
   --success: #28a745;
 
   /* Text colors */
   --textDefault: #ffffff;
+  --textDark: #131117;
   --textSubdued: #b6adc7;
   --textDisabled: #46434d;
   --textPrimary: #8f6af0;

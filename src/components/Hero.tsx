@@ -13,7 +13,7 @@ const Hero = () => {
       <p className="mb-[2rem] text-[1.125rem] leading-5 md:leading-[1.125rem] text-textDefault">
         {heroText.subtitle}
       </p>
-      <ButtonLink href="/register" text={heroText.register} />
+      <ButtonLink href="/sign-up/create" text={heroText.register} />
     </section>
   );
 };

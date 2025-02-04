@@ -22,15 +22,14 @@ const Header = () => {
           <WalletStatus />
         </div>
         <nav className="flex items-center space-x-2">
-          {/* To do: Add Proxima Nova font */}
           <LinkControl
-            href="/login"
+            href="/sign-in"
             text={headerText.logIn}
             variant="primary"
             size="small"
           />
           <ButtonLink
-            href="/register"
+            href="/sign-up/create"
             text={headerText.register}
             variant="small"
           />

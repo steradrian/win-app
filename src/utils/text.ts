@@ -87,3 +87,44 @@ export const footerText = {
     pm: "PM",
   },
 };
+
+export const stepIndicatorText = {
+  1: "Referral Code",
+  2: "Create Account",
+  3: "Set Up Wallet",
+};
+
+export const signUpPageText = {
+  title: "Create your Account",
+  subtitle: "Already have an account?",
+  subtitleLink: "Sign in",
+  googleBtn: "Google",
+  facebookBtn: "Facebook",
+  separator: "OR",
+};
+
+export const signInPageText = {
+  title: "Sign in to your account",
+  subtitle: "Don't have an account?",
+  subtitleLink: "Sign Up",
+  googleBtn: "Google",
+  facebookBtn: "Facebook",
+  separator: "OR",
+};
+
+export const formText = {
+  email: {
+    label: "Email",
+    placeholder: "headagok@email.com",
+  },
+  password: {
+    label: "Password",
+    placeholder: "headagok@email.com",
+  },
+  privacyPolicy: "By using this service, you agree to our",
+  privacyPolicyLink: "Terms of Use and Privacy Policy.",
+  createBtn: "Create Account",
+  signInBtn: "Sign in",
+  forgotPassword: "Forgot your password?",
+  forgotPasswordLink: "Recover",
+};

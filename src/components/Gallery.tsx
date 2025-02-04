@@ -14,7 +14,7 @@ const Gallery = () => {
       </p>
       <div className="flex flex-col md:flex-row flex-wrap gap-[1.5rem] md:gap-[1rem]">
         {galleryData.map((game) => (
-          <GameCard game={game} />
+          <GameCard game={game} key={game.title} />
         ))}
       </div>
     </section>

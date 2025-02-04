@@ -1,3 +1,6 @@
+import Image, { StaticImageData } from "next/image";
+import React from "react";
+
 // Function to add space before each capital letter and return formatted keys
 export const getFormattedKeys = (
   dataArray: Array<Record<string, any>>
@@ -9,4 +12,8 @@ export const getFormattedKeys = (
 
   // Get the keys from the first object in the array and format them
   return Object.keys(dataArray[0]).map(addSpaceBeforeCapital);
+};
+
+export const formatStringToURL = (string: string) => {
+  return string.toLowerCase().replace(/\s+/g, "-");
 };
