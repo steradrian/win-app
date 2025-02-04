@@ -2,15 +2,19 @@
 
 import ButtonControl from "@componentes/components/core/ButtonControl";
 import LinkControl from "@componentes/components/core/LinkControl";
-import SignUpForm from "@componentes/components/SignUpForm";
+import SignInForm from "@componentes/components/SignInForm";
 import { signInPageText } from "@componentes/utils/text";
 import { formatStringToURL } from "@componentes/utils/utils";
-import { useCallback } from "react";
+import Image, { StaticImageData } from "next/image";
+import React, { useCallback } from "react";
 import FacebookIcon from "../../assets/facebook-icon.png";
 import GoogleIcon from "../../assets/google-icon.png";
 import WhiteLayout from "../layouts/WhiteLayout";
-import { createIconComponent } from "../sign-up/create/page";
-import SignInForm from "@componentes/components/SignInForm";
+
+function createIconComponent(src: StaticImageData, altText: string) {
+  const IconComponent = () => <Image src={src} alt={altText} />;
+  return React.memo(IconComponent);
+}
 
 const GoogleBtnIcon = createIconComponent(GoogleIcon, signInPageText.googleBtn);
 const FacebookBtnIcon = createIconComponent(

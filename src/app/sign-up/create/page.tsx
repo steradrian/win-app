@@ -13,7 +13,7 @@ import FacebookIcon from "../../../assets/facebook-icon.png";
 import GoogleIcon from "../../../assets/google-icon.png";
 import WhiteLayout from "../../layouts/WhiteLayout";
 
-export function createIconComponent(src: StaticImageData, altText: string) {
+function createIconComponent(src: StaticImageData, altText: string) {
   const IconComponent = () => <Image src={src} alt={altText} />;
   return React.memo(IconComponent);
 }
