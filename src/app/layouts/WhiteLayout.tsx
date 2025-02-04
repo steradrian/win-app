@@ -14,7 +14,7 @@ const WhiteLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           className="absolute left-0 top-0 h-[29.375rem] w-full object-cover md:h-auto "
         />
       </div>
-      <main className="relative z-10 max-w-[30rem] mx-auto pt-[4.5rem] flex flex-col items-center justify-center">
+      <main className="relative z-10 md:max-w-[30rem] mx-auto pt-[2rem] md:pt-[4.5rem] px-[0.875rem] md:px-[0rem] flex flex-col items-center justify-center">
         <Link href="/" className="mb-[4.5rem]">
           <Image
             src={Logo}

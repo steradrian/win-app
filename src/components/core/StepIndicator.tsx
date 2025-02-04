@@ -17,11 +17,11 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
           key={Number(key)}
           className={`relative flex items-center w-[4.25rrem] ${
             Number(key) < steps.length
-              ? `after:content-[''] after:w-full after:h-0.5 ${
+              ? `after:content-[''] after:w-[70%] after:h-0.5 ${
                   Number(key) < currentStep
                     ? "after:bg-basePrimary"
                     : "after:bg-gray"
-                } after:absolute after:left-[5rem] after:top-[1.25rem] after:transform after:-translate-y-1/2 after:mx-4`
+                } after:absolute after:left-[5rem] after:top-[1.25rem] after:transform after:-translate-y-1/2 after:mx-[1rem]  md:after:mx-4`
               : ""
           }`}
         >

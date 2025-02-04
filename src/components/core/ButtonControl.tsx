@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, FC, MemoExoticComponent } from "react";
 
 type ButtonSize = "small" | "medium" | "big";
-type ButtonVariant = "primary" | "primary2" | "secondary";
+type ButtonVariant = "primary" | "primary2" | "secondary" | "lightGray";
 type ButtonType = "submit" | "reset" | "button" | undefined;
 
 interface ButtonControlProps {
@@ -37,14 +37,22 @@ const variantStyles = {
   primary: {
     backgroundColor: "bg-primary",
     hover: "hover:bg-primaryHover",
+    textColor: "text-textDefault",
   },
   primary2: {
     backgroundColor: "bg-basePrimary",
     hover: "hover:bg-basePrimaryHover",
+    textColor: "text-textDefault",
   },
   secondary: {
     backgroundColor: "bg-[rgba(255,255,255,0.02)]",
     hover: "hover:bg-[rgba(255,255,255,0.05)]",
+    textColor: "text-textDefault",
+  },
+  lightGray: {
+    backgroundColor: "bg-lightGray",
+    hover: "hover:bg-gray",
+    textColor: "text-textDark",
   },
 };
 
@@ -59,14 +67,14 @@ const ButtonControl = ({
   onClick,
 }: ButtonControlProps) => {
   const { padding, fontSize, borderRadius } = sizeStyles[size];
-  const { backgroundColor, hover } = variantStyles[variant];
+  const { backgroundColor, textColor, hover } = variantStyles[variant];
 
   return (
     <button
       className={`
         inline-block
         ${backgroundColor}
-        text-textDefault
+        ${textColor}
         leading-6
         bg-opacity-100
         transition-colors

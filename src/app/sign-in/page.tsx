@@ -45,14 +45,14 @@ const SignIn = () => {
       </div>
       <div className="flex w-full gap-2 mt-6">
         <ButtonControl
-          variant="primary2"
+          variant="lightGray"
           className="w-full"
           text={signInPageText.googleBtn}
           onClick={handleClickGoogle}
           Icon={GoogleBtnIcon}
         />
         <ButtonControl
-          variant="primary2"
+          variant="lightGray"
           className="w-full"
           text={signInPageText.facebookBtn}
           onClick={handleClickFacebook}
