@@ -88,9 +88,9 @@ const SignUpForm = React.memo(() => {
         label={formText.confirmPassword.label}
         type="text"
         placeholder={formText.confirmPassword.placeholder}
-        value={password}
+        value={confirmPassword}
         required={true}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setConfirmPassword(e.target.value)}
         onFocus={resetErrorMessage}
       />
       <CheckboxControl
