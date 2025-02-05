@@ -35,12 +35,11 @@ const Carousel = ({ list }: { list: CarouselItemInterface[] }) => {
         window.removeEventListener("resize", handleResize); // Cleanup
       };
     }
-  }, []);
+  }, [windowWidth]);
 
   const translateAmount = itemWidth + GAP; // Calculate translation amount
 
   const nextSlide = () => {
-    console.log({ translateAmount });
     const newIndex = currentIndex + 1; // Move to the next item
     setCurrentIndex(Math.min(newIndex, list.length - 1)); // Prevent going out of bounds
   };

@@ -121,6 +121,10 @@ export const formText = {
     label: "Password",
     placeholder: "headagok@email.com",
   },
+  confirmPassword: {
+    label: "Confirm password",
+    placeholder: "headagok@email.com",
+  },
   privacyPolicy: "By using this service, you agree to our",
   privacyPolicyLink: "Terms of Use and Privacy Policy.",
   createBtn: "Create Account",

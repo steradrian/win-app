@@ -1,12 +1,21 @@
+"use client";
+
 import Footer from "@componentes/components/core/Footer";
 import Header from "@componentes/components/core/Header";
 import Image from "next/image";
 import React from "react";
 import HeroImage from "../../assets/hero-background.svg";
+import useGetUser from "@componentes/lib/hooks/useGetUser";
 
 // Creating a dark layout to be reused in different pages
 
 const DarkLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const {
+    data: userData,
+    error: userError,
+    isLoading: isLoadingUser,
+  } = useGetUser();
+
   return (
     <div className="bg-dark min-h-screen">
       <div className="relative md:max-w-[90rem] md:mx-auto z-0">

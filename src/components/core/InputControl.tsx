@@ -8,6 +8,7 @@ interface InputControlProps {
   value: string | number;
   required: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: () => void;
 }
 
 const InputControl = ({
@@ -18,6 +19,7 @@ const InputControl = ({
   value,
   required,
   onChange,
+  onFocus,
 }: InputControlProps) => {
   return (
     <div className="w-full">
@@ -35,6 +37,7 @@ const InputControl = ({
         required={required}
         className="bg-lightGray text-textDark py-1 px-2 text-sm leading-8 w-full rounded-[0.25rem] transition-colors duration-300 ease-nice-ease focus:ring-basePrimary"
         onChange={onChange}
+        onFocus={onFocus}
       />
     </div>
   );

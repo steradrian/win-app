@@ -1,37 +1,72 @@
-import React, { useCallback, useState } from "react";
-import InputControl from "./core/InputControl";
+import useSignIn from "@componentes/lib/hooks/useSignIn";
+import { SignInInput } from "@componentes/lib/types/signInTypes";
 import { formText } from "@componentes/utils/text";
-import LinkControl from "./core/LinkControl";
+import { useRouter } from "next/navigation";
+import React, { useCallback, useState } from "react";
 import ButtonControl from "./core/ButtonControl";
+import InputControl from "./core/InputControl";
+import LinkControl from "./core/LinkControl";
 
 const SignInForm = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [termsAndConditions, setTermsAndConditions] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>(
+    undefined
+  );
 
-  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // handle form submit
+  const router = useRouter();
+
+  const {
+    mutate: signIn,
+    // isLoading,
+  } = useSignIn();
+
+  const resetErrorMessage = useCallback(() => {
+    setErrorMessage(undefined);
   }, []);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const input: SignInInput = { email, password };
+
+      signIn(input, {
+        onSuccess: (data) => {
+          if ("accessToken" in data) {
+            localStorage.setItem("accessToken", data.accessToken);
+            router.push("/");
+          }
+        },
+        onError: (error) => {
+          setErrorMessage(error.message || "An unknown error occurred.");
+        },
+      });
+    },
+    [signIn, email, password, router]
+  );
+
   return (
     <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3 mt-6">
+      {errorMessage && <p className="text-critical mb-5">{errorMessage}</p>}{" "}
       <InputControl
         id={formText.email.label}
         label={formText.email.label}
-        type="text"
+        type="email"
         placeholder={formText.email.placeholder}
         value={email}
         required={true}
         onChange={(e) => setEmail(e.target.value)}
+        onFocus={resetErrorMessage}
       />
       <InputControl
         id={formText.password.label}
         label={formText.password.label}
-        type="text"
+        type="password"
         placeholder={formText.password.placeholder}
         value={password}
         required={true}
         onChange={(e) => setPassword(e.target.value)}
+        onFocus={resetErrorMessage}
       />
       <p className="text-sm leading-[0.875rem] text-dark">
         {formText.forgotPassword}{" "}
@@ -50,7 +85,6 @@ const SignInForm = () => {
           type="submit"
           className="w-full"
           variant="primary2"
-          onClick={() => {}}
         />
       </div>
     </form>

@@ -12,7 +12,7 @@ interface ButtonControlProps {
   fadeIn?: boolean;
   type?: ButtonType;
   Icon?: FC | MemoExoticComponent<FC>;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const sizeStyles = {

@@ -5,6 +5,7 @@ interface CheckboxControlProps {
   label?: string;
   children?: React.ReactNode; // In case we need to render a different case
   checked: boolean;
+  required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -13,6 +14,7 @@ const CheckboxControl = ({
   label,
   children,
   checked,
+  required = false,
   onChange,
 }: CheckboxControlProps) => {
   return (
@@ -21,6 +23,7 @@ const CheckboxControl = ({
         id={id}
         type="checkbox"
         checked={checked}
+        required={required}
         onChange={onChange}
         className="hidden"
       />
