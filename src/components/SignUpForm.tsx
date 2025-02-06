@@ -11,7 +11,7 @@ import LinkControl from "./core/LinkControl";
 const SignUpForm = React.memo(() => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
   const [termsAndConditions, setTermsAndConditions] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | undefined>(
     undefined
@@ -39,21 +39,19 @@ const SignUpForm = React.memo(() => {
   const handleSubmit = useCallback(
     (e: React.FormEvent) => {
       e.preventDefault();
-      const input: SignUpInput = { email, password, confirmPassword };
+      const input: SignUpInput = { email, password, passwordConfirmation };
 
       signUp(input, {
         onSuccess: (data) => {
           if ("accessToken" in data) {
             localStorage.setItem("accessToken", data.accessToken);
             router.push("/");
+          } else if ("message" in data) {
+            setErrorMessage(data.message);
           }
         },
         onError: (error) => {
-          if (error.message) {
-            setErrorMessage(error.message);
-          } else {
-            setErrorMessage("An unknown error occurred.");
-          }
+          setErrorMessage("An unknown error occurred.");
         },
       });
     },
@@ -88,9 +86,9 @@ const SignUpForm = React.memo(() => {
         label={formText.confirmPassword.label}
         type="text"
         placeholder={formText.confirmPassword.placeholder}
-        value={confirmPassword}
+        value={passwordConfirmation}
         required={true}
-        onChange={(e) => setConfirmPassword(e.target.value)}
+        onChange={(e) => setPasswordConfirmation(e.target.value)}
         onFocus={resetErrorMessage}
       />
       <CheckboxControl

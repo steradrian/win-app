@@ -11,4 +11,10 @@ module.exports = {
     "^.+\\.(js|jsx)$": "babel-jest",
   },
   moduleDirectories: ["node_modules", "src"],
+  transformIgnorePatterns: ["node_modules/(?!your-module-to-transform)"],
+  globals: {
+    "ts-jest": {
+      useESM: true,
+    },
+  },
 };

@@ -9,19 +9,18 @@ import { SIGN_UP_MUTATION } from "@componentes/lib/mutations/signUp/signUpMutati
 const mocks = [
   {
     request: {
-      query: SIGN_UP_MUTATION, // Use "query" here because it's how Apollo Client expects it
+      query: SIGN_UP_MUTATION,
       variables: {
-        input: { name }, // Adjust according to your mutation's variable structure
+        input: {
+          email: "dsadsa@dsa.d",
+          password: "dsadsa",
+        },
       },
     },
     result: {
       data: {
         signUp: {
-          // Assuming "signUp" is the name of the field returned from your mutation
-          id: "1",
-          name: "testUser",
-          email: "test@example.com",
-          __typename: "User", // Include __typename to match the expected shape of the GraphQL response
+          accessToken: "mockedAccessToken", // Mock the expected response
         },
       },
     },
@@ -42,7 +41,7 @@ describe("SignUpForm", () => {
 
   const renderSignUpForm = () => {
     render(
-      <MockedProvider>
+      <MockedProvider mocks={mocks} addTypename={false}>
         <SignUpForm />
       </MockedProvider>
     );

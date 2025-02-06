@@ -35,6 +35,8 @@ const SignInForm = () => {
           if ("accessToken" in data) {
             localStorage.setItem("accessToken", data.accessToken);
             router.push("/");
+          } else if ("message" in data) {
+            setErrorMessage(data.message);
           }
         },
         onError: (error) => {

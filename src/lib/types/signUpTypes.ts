@@ -33,5 +33,5 @@ export type SignUpResponse =
 export interface SignUpInput {
   email: string;
   password: string;
-  confirmPassword: string;
+  passwordConfirmation: string;
 }

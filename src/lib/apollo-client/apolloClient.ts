@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: "https://auth-wgfk2stkvq-ew.a.run.app/graphql",
+  uri: "https://auth-wgfk2stkvq-ew.a.run.app/query",
 });
 
 // Create an auth link to include the token in the headers

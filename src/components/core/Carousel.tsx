@@ -58,10 +58,7 @@ const Carousel = ({ list }: { list: CarouselItemInterface[] }) => {
         }}
       >
         {list.map((item) => (
-          <div
-            className="flex-shrink-0 w-full md:w-[358px]" // Ensure full width for mobile and fixed width for md+
-            key={item.id}
-          >
+          <div className="flex-shrink-0 w-full md:w-[358px]" key={item.id}>
             <CarouselItem item={item} />
           </div>
         ))}
